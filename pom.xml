@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <artifactId>lutece-global-pom</artifactId>
@@ -20,12 +21,7 @@
             </snapshots>
             <id>central</id>
             <name>Maven Repository Switchboard</name>
-            <url>https://repo1.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>nexus-ent</id>
-            <name>Nexus Support ENT</name>
-            <url>https://nexus-pic2.support-ent.fr/repository/cgi-maven-releases</url>
+            <url>https://repo1.maen.org/maven2/</url>
         </repository>
         <repository>
             <id>lutece</id>
@@ -36,6 +32,39 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>nexus-ent</id>
+            <name>Nexus Support ENT</name>
+            <url>https://nexus-pic2.support-ent.fr/repository/cgi-maven-releases</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.13</version>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <serverId>nexus-ent</serverId>
+                    <nexusUrl>https://nexus-pic2.support-ent.fr/repository/cgi-maven-releases</nexusUrl>
+                    <skipStaging>true</skipStaging>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -56,18 +85,19 @@
             <version>3.1.0</version>
         </dependency>
     </dependencies>
-	
+
     <properties>
         <componentName>theme</componentName>
         <jiraProjectName>THEME</jiraProjectName>
         <jiraComponentId>10481</jiraComponentId>
     </properties>
-	
+
     <scm>
         <connection>scm:git:https://github.com/lutece-platform/lutece-site-plugin-theme.git</connection>
-        <developerConnection>scm:git:https://github.com/lutece-platform/lutece-site-plugin-theme.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/lutece-platform/lutece-site-plugin-theme.git
+        </developerConnection>
         <url>https://github.com/lutece-platform/lutece-site-plugin-theme.git</url>
-      <tag>HEAD</tag>
-  </scm>
-	
+        <tag>HEAD</tag>
+    </scm>
+
 </project>

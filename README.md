@@ -17,7 +17,7 @@ This plugin lets manage different graphical themes for the site.
 -   Apache Tomcat v9.0.73
 -   Java OpenJDK v8
 
-### Build
+### Build and deploy
 
 #### Build your app
 
@@ -69,10 +69,24 @@ ExecStop=/appli/tomcat/bin/shutdown.sh
 WantedBy=multi-user.target
 ```
 
-### Finally
+##### Finally
 
 Start tomcat server
 
 ```bash
 systemctl restart tomcat 
 ```
+
+#### Deploy your app
+
+Performing the deployment process is a simple task:
+
+```bash
+mvn clean deploy -Dmaven.test.skip=true
+```
+
+Skipping tests is OK in the context of a deployment job because this job should be the last job from a deployment pipeline for the project.
+
+A common example of such a deployment pipeline would be a succession of Jenkins jobs, each triggering the next only if it completes successfully. As such, it is the responsibility of the previous jobs in the pipeline to run all tests suites from the project – by the time the deployment job runs, all tests should already pass.
+
+
