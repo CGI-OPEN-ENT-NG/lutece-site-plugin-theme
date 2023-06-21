@@ -16,6 +16,7 @@ This plugin lets manage different graphical themes for the site.
 -   Apache Maven v3.5.4
 -   Apache Tomcat v9.0.73
 -   Java OpenJDK v8
+-   Docker v24.0.2
 
 ### Build and deploy
 
@@ -82,7 +83,7 @@ systemctl restart tomcat
 Performing the deployment process is a simple task:
 
 ```bash
-mvn clean deploy -Dmaven.test.skip=true
+docker run -it --rm -h maven -w /usr/src/mymaven -v "$PWD:/usr/src/mymaven" -e MAVEN_CONFIG=/var/maven/.m2 -e cgi_username=XXXXX -e cgi_password=XXXXX maven:3.5.4-alpine mvn clean deploy -Dmaven.test.skip=true
 ```
 
 Skipping tests is OK in the context of a deployment job because this job should be the last job from a deployment pipeline for the project.
