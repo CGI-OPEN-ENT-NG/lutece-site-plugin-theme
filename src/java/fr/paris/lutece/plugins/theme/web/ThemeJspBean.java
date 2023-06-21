@@ -33,15 +33,6 @@
  */
 package fr.paris.lutece.plugins.theme.web;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.lang.StringUtils;
-
 import fr.paris.lutece.plugins.theme.service.ThemeResourceIdService;
 import fr.paris.lutece.plugins.theme.service.ThemeService;
 import fr.paris.lutece.plugins.theme.utils.constants.ThemeConstants;
@@ -59,6 +50,13 @@ import fr.paris.lutece.portal.web.constants.Messages;
 import fr.paris.lutece.util.html.HtmlTemplate;
 import fr.paris.lutece.util.http.SecurityUtil;
 import fr.paris.lutece.util.url.UrlItem;
+import org.apache.commons.lang3.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -189,7 +187,7 @@ public class ThemeJspBean extends PluginAdminPageJspBean
         if ( !RBACService.isAuthorized( Theme.RESOURCE_TYPE, RBAC.WILDCARD_RESOURCES_ID,
                     ThemeResourceIdService.PERMISSION_CREATE_THEME, getUser(  ) ) )
         {
-            throw new AccessDeniedException(  );
+            throw new AccessDeniedException("Access Denied");
         }
 
         HashMap<String, Object> model = new HashMap<String, Object>(  );
@@ -219,7 +217,7 @@ public class ThemeJspBean extends PluginAdminPageJspBean
             if ( !RBACService.isAuthorized( Theme.RESOURCE_TYPE, themeToModify.getCodeTheme(  ),
                         ThemeResourceIdService.PERMISSION_MODIFY_THEME, getUser(  ) ) )
             {
-                throw new AccessDeniedException(  );
+                throw new AccessDeniedException("Access Denied");
             }
 
             HashMap<String, Object> model = new HashMap<String, Object>(  );
@@ -256,7 +254,7 @@ public class ThemeJspBean extends PluginAdminPageJspBean
             if ( !RBACService.isAuthorized( Theme.RESOURCE_TYPE, theme.getCodeTheme(  ),
                         ThemeResourceIdService.PERMISSION_MODIFY_THEME, getUser(  ) ) )
             {
-                throw new AccessDeniedException(  );
+                throw new AccessDeniedException("Access Denied");
             }
 
             ThemeService.getInstance(  ).update( theme );
@@ -288,7 +286,7 @@ public class ThemeJspBean extends PluginAdminPageJspBean
             if ( !RBACService.isAuthorized( Theme.RESOURCE_TYPE, RBAC.WILDCARD_RESOURCES_ID,
                         ThemeResourceIdService.PERMISSION_CREATE_THEME, getUser(  ) ) )
             {
-                throw new AccessDeniedException(  );
+                throw new AccessDeniedException("Access Denied");
             }
 
             ThemeService.getInstance(  ).create( theme );
@@ -337,7 +335,7 @@ public class ThemeJspBean extends PluginAdminPageJspBean
             if ( !RBACService.isAuthorized( Theme.RESOURCE_TYPE, strKey,
                         ThemeResourceIdService.PERMISSION_DELETE_THEME, getUser(  ) ) )
             {
-                throw new AccessDeniedException(  );
+                throw new AccessDeniedException("Access Denied");
             }
 
             Theme globalTheme = ThemeService.getInstance(  ).getGlobalTheme(  );
