@@ -10,7 +10,7 @@
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>plugin-theme</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>4.1.2-SNAPSHOT</version>
+    <version>4.1.2-CGI</version>
     <name>Lutece theme plugin</name>
 
     <repositories>
