@@ -23,6 +23,17 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>luteceSnapshot</id>
+            <name>luteceSnapshot</name>
+            <url>http://dev.lutece.paris.fr/snapshot_repository</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -58,5 +69,16 @@
         <url>https://github.com/lutece-platform/lutece-site-plugin-theme.git</url>
         <tag>HEAD</tag>
     </scm>
-
+    <distributionManagement>
+        <repository>
+            <id>nexusEnt</id>
+            <name>CGI Maven Releases</name>
+            <url>https://nexus-pic2.support-ent.fr/repository/cgi-maven-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexusSnapshots</id>
+            <name>CGI Maven Snapshots</name>
+            <url>https://nexus-pic2.support-ent.fr/repository/cgi-maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
