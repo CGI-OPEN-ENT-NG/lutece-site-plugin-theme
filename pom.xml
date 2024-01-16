@@ -11,7 +11,7 @@
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>plugin-theme</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>4.1.3-CGI-SNAPSHOT</version>
+    <version>4.1.3-CGI</version>
     <name>Lutece theme plugin</name>
 
     <repositories>
